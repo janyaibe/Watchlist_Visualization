@@ -1,0 +1,247 @@
+<head>
+    <title> stock update </title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+</head>
+<body class="container-fluid">
+    <div class='nav-bar' style="display: flex; flex-direction: row; justify-content: space-between; margin-bottom:10px;background-color:#20303f; position: fixed; height: 7%; top:0; left:0; right:0; margin-bottom: 5px; z-index: 99;">
+        <div class='nav-item ev'> EV </div>
+        <div class='nav-item tech'> Tech </div>
+        <div class='d-none d-lg-block nav-item'> Pharma </div>
+        <div class='nav-item canabi'> Canabis </div>
+        <div class='d-none d-lg-block nav-item'> Solar </div>
+        <div class='d-none d-lg-block nav-item'> Auto </div>
+        <div class='d-none d-lg-block nav-item'> Socials</div>
+        <div class='nav-item crypto'> Crypto </div>
+            
+        <select class='d-none d-sm-none d-md-none amount'>
+            <option> 5 </option>
+            <option> 10 </option>
+            <option> 20 </option>
+            <option> 25 </option>
+        </select>
+        <button type="submit" class="d-none d-sm-none d-md-none Apply"> Apply </button>
+    </div>
+
+    <div class='container' style="margin-top: 50px;">
+        <div class='row lev Cryptos' style='display:flex; justify-content: space-around; padding: 20px; border-bottom: 2px solid #90ADBE; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;'>
+            <div class='col-lg-6'>
+                <div class='row'  style='display:flex; justify-content: space-evenly;'>
+                    <div class='card riot_c' style=' padding: 5px; margin-top: 10px; width: 300px; height: 100px; background-color: transparent; box-shadow: 0px 4px 6px #1D262E; '>
+                        <div class='row'>
+                            <div class='col-5'><h1 style='color: #80BDBF;'> RIOT </h1></div>
+                            <div class='col-7 riot_s'>
+                                <span class='riot_hi' style='font-weight:bold; color:#77a765;'>High: </span><br>
+                                <span class='riot_lo' style='font-weight:bold; color:#b44040;'>Low: </span><br>
+                                <span class='riot_vol' style='font-weight:bold; color:#adb380;'>Volume: </span><br>
+                                <span class='riot_rn' style='font-weight:bold; color:#80BDBF;'>Current: </span><br>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='card mara_c' style='padding: 5px;margin-top: 10px; width: 300px; height: 100px; background-color: transparent; box-shadow: 0px 4px 6px #1D262E;'>
+                        <div class='row'>
+                            <div class='col-6'><h1 style='color: #80BDBF;'> MARA </h1></div>
+                            <div class='col-6 mara_s'>
+                                <span class='mara_hi' style='font-weight:bold; color:#77a765;'>High: </span><br>
+                                <span class='mara_lo' style='font-weight:bold; color:#b44040;'>Low: </span><br>
+                                <span class='mara_vol' style='font-weight:bold; color:#adb380;'>Volume: </span><br>
+                                <span class='mara_rn' style='font-weight:bold; color:#80BDBF;'>Current: </span><br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class='col-lg-6' style='display:flex; flex-direction: column;'>
+                <div class='col-lg-3'><div class='btn' id='crypto_gh' style='display: flex; align-self: flex-end; margin-top: 30px;background-color: #6f9e9e;color: #D8E1EB; width: 80px; height: 30px; font-size: 20; padding-top: 5px;'>Graph</div></div>
+                <canvas id='crypto_chrt' style="display: none; max-width: 700px; max-height: 300px; border: 3px solid #90ADBE; margin-top: 20px;"></canvas>
+            </div>
+        </div>
+    
+
+        <div class='row lev Techs' style='display:flex; justify-content: space-around; padding: 20px; border-bottom: 2px solid #90ADBE; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;'>
+            <div class='card aapl_c' style=' padding: 5px; margin-top: 10px; width: 300px; height: 100px; background-color: transparent; box-shadow: 0px 4px 6px #1D262E;'>
+                <div class='row'>
+                    <div class='col-5'><h1 style='color: #80BDBF;'> AAPl </h1></div>
+                    <div class='col-7 aapl_s'>
+                        <span class='aapl_hi' style='font-weight:bold; color:#77a765;'>High: </span><br>
+                        <span class='aapl_lo' style='font-weight:bold; color:#b44040;'>Low: </span><br>
+                        <span class='aapl_vol' style='font-weight:bold; color:#adb380;'>Volume: </span><br>
+                        <span class='aapl_rn' style='font-weight:bold; color:#80BDBF;'>Current: </span><br>
+                    </div>
+                </div>
+            </div>
+            <div class='card amd_c' style='padding: 5px;margin-top: 10px; width: 300px; height: 100px; background-color: transparent; box-shadow: 0px 4px 6px #1D262E;'>
+                <div class='row'>
+                    <div class='col-5'><h1 style='color: #80BDBF;'> AMD </h1></div>
+                    <div class='col-7 amd_s'>
+                        <span class='amd_hi' style='font-weight:bold; color:#77a765;'>High: </span><br>
+                        <span class='amd_lo' style='font-weight:bold; color:#b44040;'>Low: </span><br>
+                        <span class='amd_vol' style='font-weight:bold; color:#adb380;'>Volume: </span><br>
+                        <span class='amd_rn' style='font-weight:bold; color:#80BDBF;'>Current: </span><br>
+                    </div>
+                </div>
+            </div>
+            <div class='card sne_c' style='padding: 5px;margin-top: 10px; width: 300px; height: 100px; background-color: transparent; box-shadow: 0px 4px 6px #1D262E;'>
+                <div class='row'>
+                    <div class='col-5'><h1 style='color: #80BDBF;'> SNE </h1></div>
+                    <div class='col-7 sne_s'>
+                        <span class='sne_hi' style='font-weight:bold; color:#77a765;'>High: </span><br>
+                        <span class='sne_lo' style='font-weight:bold; color:#b44040;'>Low: </span><br>
+                        <span class='sne_vol' style='font-weight:bold; color:#adb380;'>Volume: </span><br>
+                        <span class='sne_rn' style='font-weight:bold; color:#80BDBF;'>Current: </span><br>
+                    </div>
+                </div>
+            </div>
+            <div class='card twtr_c' style='padding: 5px;margin-top: 10px; width: 300px; height: 100px; background-color: transparent; box-shadow: 0px 4px 6px #1D262E;'>
+                <div class='row'>
+                    <div class='col-6'><h1 style='color: #80BDBF;'> TWTR </h1></div>
+                    <div class='col-6 twtr_s'>
+                        <span class='twtr_hi' style='font-weight:bold; color:#77a765;'>High: </span><br>
+                        <span class='twtr_lo' style='font-weight:bold; color:#b44040;'>Low: </span><br>
+                        <span class='twtr_vol' style='font-weight:bold; color:#adb380;'>Volume: </span><br>
+                        <span class='twtr_rn' style='font-weight:bold; color:#80BDBF;'>Current: </span><br>
+                    </div>
+                </div>
+            </div>
+            <div class='card intc_c' style='padding: 5px;margin-top: 10px; width: 300px; height: 100px; background-color: transparent; box-shadow: 0px 4px 6px #1D262E;'>
+                <div class='row'>
+                    <div class='col-5'><h1 style='color: #80BDBF;'> INTC </h1></div>
+                    <div class='col-7 intc_s'>
+                        <span class='intc_hi' style='font-weight:bold; color:#77a765;'>High: </span><br>
+                        <span class='intc_lo' style='font-weight:bold; color:#b44040;'>Low: </span><br>
+                        <span class='intc_vol' style='font-weight:bold; color:#adb380;'>Volume: </span><br>
+                        <span class='intc_rn' style='font-weight:bold; color:#80BDBF;'>Current: </span><br>
+                    </div>
+                </div>
+            </div>
+            <div class='col-lg-6' style='display:flex; flex-direction: column;'>
+                <div class='col-lg-3'><div class='btn' id='tech_gh' style='display: flex; align-self: flex-end; margin-top: 30px;background-color: #6f9e9e;color: #D8E1EB; width: 80px; height: 30px; font-size: 20; padding-top: 5px;'>Graph</div></div>
+                <canvas id='tech_chrt' style="display: none; max-width: 700px; max-height: 300px; border: 3px solid #90ADBE; margin-top: 20px;"></canvas>
+            </div>
+        </div>
+        
+        <div class='row lev Evs' style='display:flex; justify-content: space-around; padding: 20px; border-bottom: 2px solid #90ADBE; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;'>
+            <div class='card tsla_c' style=' padding: 5px; margin-top: 10px; width: 300px; height: 100px; background-color: transparent; box-shadow: 0px 4px 6px #1D262E;'>
+                <div class='row'>
+                    <div class='col-5'><h1 style='color: #80BDBF;'> TSLA </h1></div>
+                    <div class='col-7 tsla_s'>
+                        <span class='tsla_hi' style='font-weight:bold; color:#77a765;'>High: </span><br>
+                        <span class='tsla_lo' style='font-weight:bold; color:#b44040;'>Low: </span><br>
+                        <span class='tsla_vol' style='font-weight:bold; color:#adb380;'>Volume: </span><br>
+                        <span class='tsla_rn' style='font-weight:bold; color:#80BDBF;'>Current: </span><br>
+                    </div>
+                </div>
+            </div>
+            <div class='card nio_c' style='padding: 5px;margin-top: 10px; width: 300px; height: 100px; background-color: transparent; box-shadow: 0px 4px 6px #1D262E;'>
+                <div class='row'>
+                    <div class='col-5'><h1 style='color: #80BDBF;'> NIO </h1></div>
+                    <div class='col-7 nio_s'>
+                        <span class='nio_hi' style='font-weight:bold; color:#77a765;'>High: </span><br>
+                        <span class='nio_lo' style='font-weight:bold; color:#b44040;'>Low: </span><br>
+                        <span class='nio_vol' style='font-weight:bold; color:#adb380;'>Volume: </span><br>
+                        <span class='nio_rn' style='font-weight:bold; color:#80BDBF;'>Current: </span><br>
+                    </div>
+                </div>
+            </div>
+            <div class='card nkla_c' style='padding: 5px;margin-top: 10px; width: 300px; height: 100px; background-color: transparent; box-shadow: 0px 4px 6px #1D262E;'>
+                <div class='row'>
+                    <div class='col-6'><h1 style='color: #80BDBF;'> NKLA </h1></div>
+                    <div class='col-6 nkla_s'>
+                        <span class='nkla_hi' style='font-weight:bold; color:#77a765;'>High: </span><br>
+                        <span class='nkla_lo' style='font-weight:bold; color:#b44040;'>Low: </span><br>
+                        <span class='nkla_vol' style='font-weight:bold; color:#adb380;'>Volume: </span><br>
+                        <span class='nkla_rn' style='font-weight:bold; color:#80BDBF;'>Current: </span><br>
+                    </div>
+                </div>
+            </div>
+            <div class='card xpev_c' style='padding: 5px;margin-top: 10px; width: 300px; height: 100px; background-color: transparent; box-shadow: 0px 4px 6px #1D262E;'>
+                <div class='row'>
+                    <div class='col-6'><h1 style='color: #80BDBF;'> XPEV </h1></div>
+                    <div class='col-6 xpev_s'>
+                        <span class='xpev_hi' style='font-weight:bold; color:#77a765;'>High: </span><br>
+                        <span class='xpev_lo' style='font-weight:bold; color:#b44040;'>Low: </span><br>
+                        <span class='xpev_vol' style='font-weight:bold; color:#adb380;'>Volume: </span><br>
+                        <span class='xpev_rn' style='font-weight:bold; color:#80BDBF;'>Current: </span><br>
+                    </div>
+                </div>
+            </div>
+            <div class='card li_c' style='padding: 5px;margin-top: 10px; width: 300px; height: 100px; background-color: transparent; box-shadow: 0px 4px 6px #1D262E;'>
+                <div class='row'>
+                    <div class='col-4'><h1 style='color: #80BDBF;'> LI </h1></div>
+                    <div class='col-8 li_s'>
+                        <span class='li_hi' style='font-weight:bold; color:#77a765;'>High: </span><br>
+                        <span class='li_lo' style='font-weight:bold; color:#b44040;'>Low: </span><br>
+                        <span class='li_vol' style='font-weight:bold; color:#adb380;'>Volume: </span><br>
+                        <span class='li_rn' style='font-weight:bold; color:#80BDBF;'>Current: </span><br>
+                    </div>
+                </div>
+            </div>
+            <div class='col-lg-4' style='display:flex; flex-direction: column;'>
+                <div class='col-lg-3'><div class='btn' id='ev_gh' style='display: flex; align-self: flex-end; margin-top: 30px;background-color: #6f9e9e;color: #D8E1EB; width: 80px; height: 30px; font-size: 20; padding-top: 5px;'>Graph</div></div>
+                <canvas id='ev_chrt' style="display: none; max-width: 700px; max-height: 300px; border: 3px solid #90ADBE; margin-top: 20px;"></canvas>
+            </div>
+        </div>
+
+        <div class='row lev Canabis' style='display:flex; justify-content: space-around; padding: 20px; border-bottom: 2px solid #90ADBE; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;'>
+            <div class='card tlry_c' style=' padding: 5px; margin-top: 10px; width: 300px; height: 100px; background-color: transparent; box-shadow: 0px 4px 6px #1D262E; '>
+                <div class='row'>
+                    <div class='col-5'><h1 style='color: #80BDBF;'> TLRY </h1></div>
+                    <div class='col-7 tlry_s'>
+                        <span class='tlry_hi' style='font-weight:bold; color:#77a765;'>High: </span><br>
+                        <span class='tlry_lo' style='font-weight:bold; color:#b44040;'>Low: </span><br>
+                        <span class='tlry_vol' style='font-weight:bold; color:#adb380;'>Volume: </span><br>
+                        <span class='tlry_rn' style='font-weight:bold; color:#80BDBF;'>Current: </span><br>
+                    </div>
+                </div>
+            </div>
+            <div class='card cgc_c' style='padding: 5px;margin-top: 10px; width: 300px; height: 100px; background-color: transparent; box-shadow: 0px 4px 6px #1D262E;'>
+                <div class='row'>
+                    <div class='col-5'><h1 style='color: #80BDBF;'> CGC </h1></div>
+                    <div class='col-7 cgc_s'>
+                        <span class='cgc_hi' style='font-weight:bold; color:#77a765;'>High: </span><br>
+                        <span class='cgc_lo' style='font-weight:bold; color:#b44040;'>Low: </span><br>
+                        <span class='cgc_vol' style='font-weight:bold; color:#adb380;'>Volume: </span><br>
+                        <span class='cgc_rn' style='font-weight:bold; color:#80BDBF;'>Current: </span><br>
+                    </div>
+                </div>
+            </div>
+            <div class='card acb_c' style='padding: 5px;margin-top: 10px; width: 300px; height: 100px; background-color: transparent; box-shadow: 0px 4px 6px #1D262E;'>
+                <div class='row'>
+                    <div class='col-6'><h1 style='color: #80BDBF;'> ACB </h1></div>
+                    <div class='col-6 acb_s'>
+                        <span class='acb_hi' style='font-weight:bold; color:#77a765;'>High: </span><br>
+                        <span class='acb_lo' style='font-weight:bold; color:#b44040;'>Low: </span><br>
+                        <span class='acb_vol' style='font-weight:bold; color:#adb380;'>Volume: </span><br>
+                        <span class='acb_rn' style='font-weight:bold; color:#80BDBF;'>Current: </span><br>
+                    </div>
+                </div>
+            </div>
+            <div class='card sndl_c' style='padding: 5px;margin-top: 10px; width: 300px; height: 100px; background-color: transparent; box-shadow: 0px 4px 6px #1D262E;'>
+                <div class='row'>
+                    <div class='col-6'><h1 style='color: #80BDBF;'> SNDL </h1></div>
+                    <div class='col-6 sndl_s'>
+                        <span class='sndl_hi' style='font-weight:bold; color:#77a765;'>High: </span><br>
+                        <span class='sndl_lo' style='font-weight:bold; color:#b44040;'>Low: </span><br>
+                        <span class='sndl_vol' style='font-weight:bold; color:#adb380;'>Volume: </span><br>
+                        <span class='sndl_rn' style='font-weight:bold; color:#80BDBF;'>Current: </span><br>
+                    </div>
+                </div>
+            </div>
+            <div class='col-lg-4' style='display:flex; flex-direction: column;'>
+                <div class='col-lg-3'><div class='btn' id='canabis_gh' style='display: flex; align-self: flex-end; margin-top: 30px;background-color: #6f9e9e;color: #D8E1EB; width: 80px; height: 30px; font-size: 20; padding-top: 5px;'>Graph</div></div>
+                <canvas id='canabis_chrt' style="display: none; max-width: 700px; max-height: 300px; border: 3px solid #90ADBE; margin-top: 20px;"></canvas>
+            </div>
+        </div>
+    </div>
+
+   
+
+
+<script src="script.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>

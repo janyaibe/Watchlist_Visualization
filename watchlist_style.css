@@ -1,0 +1,74 @@
+body{
+    background-color: #293C4F !important;
+    padding: 20px;
+}
+
+select{
+    background-color: #63788D;
+    min-width: 100px;
+    height: 30px;
+    font-weight: bold;
+    color: #D8E1EB;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 10px !important;
+}
+button{
+    background-color: #50667C;
+    min-width: 80px;
+    height: 30px;                              
+    font-weight: bold;
+    color: #D8E1EB;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 10px !important;                                             
+}
+
+
+.lev{
+    transition: .75s ease-out;
+    
+}
+@keyframes slide{
+    from{
+        transform: translateY(0%)
+    }
+    to{
+        transform: translateY(100%)
+    }
+}
+.lev:hover{
+    background-color: rgba(0,0,0,.55);
+}
+.card:hover{
+    border: 1px solid #90ADBE;                                                                  
+}
+
+.nav-item{
+    font-size: 25 !important;
+    font-weight: bold !important;
+    padding-right: 10px;
+    padding-left: 10px;
+    box-shadow: 0px 4px 6px #1D262E;
+    font-size: 20;
+    color: #5F87AA;
+    justify-content: center;
+    vertical-align: middle;
+    transition: 1s ease;
+    padding-top: 15px;
+}
+.nav-item:hover{
+    transform:translate(0px, -5px);
+    color: #BCD6EE;
+
+}
+
+.sec{
+    display: flex;
+    border: 2px solid #96A7BB;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10px;
+    margin-top: 20px;
+}
